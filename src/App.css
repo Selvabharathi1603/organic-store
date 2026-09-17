@@ -1,0 +1,136 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #0a0f0d;
+  color: #f3f4f6;
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+
+.navbar {
+  background-color: rgba(18, 27, 22, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #23352b;
+  padding: 16px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #34d399;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #9ca3af;
+  font-weight: 500;
+  font-size: 15px;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #10b981;
+}
+
+.cart-badge {
+  background-color: #10b981;
+  color: #05140d;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+.hero, div[style*="background: rgb(220, 240, 225)"], div[style*="#dcf0e1"] {
+  background: #121b16 !important;
+  border: 1px solid #23352b;
+  border-radius: 16px;
+  color: #f3f4f6 !important;
+  padding: 40px 20px;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 1150px;
+}
+
+.hero h1, .hero h2 {
+  color: #34d399 !important;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  color: #9ca3af !important;
+}
+
+
+.card, div[style*="box-shadow"], div[style*="border-radius: 8px"] {
+  background-color: #16221c;
+  border: 1px solid #23352b;
+  border-radius: 12px;
+  color: #f3f4f6;
+  transition: border-color 0.2s;
+}
+
+.card:hover {
+  border-color: #10b981;
+}
+
+
+button, .btn, a[style*="background: rgb(46, 125, 50)"] {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  color: #041c12 !important;
+  border: none !important;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+
+input, select {
+  background-color: #0e1511 !important;
+  border: 1px solid #23352b !important;
+  color: #f3f4f6 !important;
+  padding: 10px 14px;
+  border-radius: 6px;
+  outline: none;
+}
+
+
+footer {
+  background-color: #121b16;
+  border-top: 1px solid #23352b;
+  color: #9ca3af;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 40px;
+}

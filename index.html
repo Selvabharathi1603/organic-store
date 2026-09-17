@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>PureOrganics Store</title>
+
+    <!-- Complete Store CSS -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      }
+
+      html, body {
+        background-color: #f8fafc;
+        color: #1f2937;
+        min-height: 100vh;
+        width: 100%;
+        overflow-x: hidden; /* Stops horizontal page wobble */
+      }
+
+      #root {
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      /* Base Layout Constraints */
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: clamp(14px, 3vw, 30px) clamp(10px, 3vw, 20px);
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      /* Hero Section */
+      .hero, [class*="hero"] {
+        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%) !important;
+        border-radius: 16px;
+        padding: clamp(24px, 5vw, 50px) 16px !important;
+        text-align: center;
+        margin-bottom: 30px;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      .hero h1, .hero h2 {
+        color: #1b5e20 !important;
+        font-size: clamp(20px, 4vw, 32px) !important;
+        margin-bottom: 12px;
+      }
+
+      .hero p {
+        color: #2e7d32 !important;
+        font-size: clamp(13px, 2.5vw, 16px) !important;
+        max-width: 650px;
+        margin: 0 auto 20px auto;
+      }
+
+      /* Value Proposition Badges */
+      div[style*="display: flex"][style*="justify-content"],
+      div[style*="display: flex"][style*="gap"] {
+        flex-wrap: wrap !important;
+        gap: 12px !important;
+      }
+
+      div[style*="display: flex"][style*="justify-content"] > div {
+        flex: 1 1 200px !important;
+        min-width: 160px !important;
+        box-sizing: border-box !important;
+      }
+
+      /* Responsive Product Grid */
+      .product-grid, .grid, [class*="grid"] {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+        gap: clamp(12px, 2.5vw, 24px) !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        align-items: start !important; /* Prevents stretching empty space beneath cards */
+      }
+
+      /* Product Cards - Form-fitted with zero trailing space */
+      .card, [class*="card"] {
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 12px !important;
+        padding: 14px !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important; /* Locks content from top down */
+        height: auto !important;               /* Stops vertical dead space */
+        min-height: 0 !important;
+        overflow: hidden !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      /* Force Image Sizing Everywhere */
+      img {
+        max-width: 100% !important;
+        height: auto;
+        display: block;
+      }
+
+      .card img, [class*="card"] img {
+        width: 100% !important;
+        height: 150px !important;
+        max-height: 150px !important;
+        object-fit: cover !important;
+        border-radius: 8px !important;
+        margin-bottom: 8px !important;
+      }
+
+      /* Card Title */
+      .card h3, [class*="card"] h3 {
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        margin: 4px 0 !important;
+        line-height: 1.3 !important;
+        height: 38px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        display: block !important;
+      }
+
+      /* Card Description */
+      .card p, [class*="card"] p {
+        font-size: 12px !important;
+        color: #64748b !important;
+        margin-bottom: 6px !important;
+        line-height: 1.3 !important;
+        height: 32px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        display: block !important;
+      }
+
+      /* Price Styling */
+      .card .price, [class*="card"] .price {
+        font-size: 15px !important;
+        font-weight: 700 !important;
+        color: #2e7d32 !important;
+        margin: 4px 0 10px 0 !important;
+      }
+
+      /* Standard Form Controls */
+      input, select, textarea {
+        width: 100% !important;
+        padding: 10px 14px !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 8px !important;
+        font-size: 14px !important;
+        margin-bottom: 12px !important;
+        outline: none !important;
+        box-sizing: border-box !important;
+      }
+
+      input:focus, select:focus, textarea:focus {
+        border-color: #2e7d32 !important;
+        box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2) !important;
+      }
+
+      /* Universal Green Buttons */
+      button, .btn, a.btn {
+        background-color: #2e7d32 !important;
+        color: #ffffff !important;
+        border: none !important;
+        padding: 10px 16px !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+        font-size: 14px !important;
+        cursor: pointer !important;
+        transition: background-color 0.2s ease !important;
+        text-decoration: none !important;
+        display: inline-block !important;
+        box-sizing: border-box !important;
+      }
+
+      /* Add to Cart button inside product card */
+      .card button, [class*="card"] button {
+        width: 100% !important;
+        margin-top: auto !important;
+        margin-bottom: 0 !important;
+        padding: 9px 12px !important;
+      }
+
+      button:hover, .btn:hover {
+        background-color: #1b5e20 !important;
+      }
+
+      /* Tables (Mobile responsive scroll wrapper) */
+      table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        background: #ffffff !important;
+        border-radius: 8px !important;
+        overflow-x: auto !important;
+        display: block !important;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+        margin-top: 16px !important;
+      }
+
+      th, td {
+        padding: 10px 14px !important;
+        text-align: left !important;
+        border-bottom: 1px solid #f1f5f9 !important;
+        white-space: nowrap !important;
+      }
+
+      th {
+        background: #f8fafc !important;
+        font-weight: 600 !important;
+        color: #475569 !important;
+      }
+
+      /* Mobile Sizing (Screens below 520px) */
+      @media (max-width: 520px) {
+        .product-grid, .grid, [class*="grid"] {
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: 10px !important;
+          align-items: start !important;
+        }
+
+        .card, [class*="card"] {
+          padding: 10px !important;
+          height: auto !important;
+        }
+
+        .card img, [class*="card"] img {
+          height: 110px !important;
+          max-height: 110px !important;
+          margin-bottom: 6px !important;
+        }
+
+        .card h3, [class*="card"] h3 {
+          font-size: 13px !important;
+          height: 34px !important;
+        }
+
+        .card p, [class*="card"] p {
+          font-size: 11px !important;
+          height: 28px !important;
+          margin-bottom: 4px !important;
+        }
+
+        .card .price, [class*="card"] .price {
+          font-size: 13px !important;
+          margin: 4px 0 8px 0 !important;
+        }
+
+        .card button, [class*="card"] button {
+          font-size: 12px !important;
+          padding: 8px 6px !important;
+          white-space: nowrap !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
